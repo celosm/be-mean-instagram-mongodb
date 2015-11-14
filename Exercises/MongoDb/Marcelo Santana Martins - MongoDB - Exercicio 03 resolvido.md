@@ -44,7 +44,7 @@ marcelo-VirtualBox(mongod-3.0.7) be-mean-pokemons> db.pokemons.find(query)
   "defense": 20,
   "height": 0.5
 }
-{}
+{
   "_id": ObjectId("5644c6ffe1e9cc030fc38311"),
   "name": "Pikachu",
   "description": "Togetic is said to be a Pokémon that brings good fortune.",
