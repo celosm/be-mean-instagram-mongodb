@@ -19,7 +19,6 @@ be-mean-instagram ? 0.078GB
 local ? 0.031GB
 ```
 
-
 ## Listagem das coleções (passo 3)
 ```
 > show collections
@@ -31,7 +30,7 @@ local ? 0.031GB
 > var pokemon = {'name':'Squirtle','description':'Squirtles shell is not merely used for protection.',attack: 30,defense: 30, height: 0.5 }
 > db.pokemons.save(pokemon)
 Inserted 1 record(s) in 128ms
-WriteResult({
+WriteResult({ 
   "nInserted": 1
 })
 
@@ -63,6 +62,7 @@ WriteResult({
   "nInserted": 1
 })
 ```
+
 
 ## Lista dos pokemons (passo 5)
 ```
@@ -110,10 +110,11 @@ WriteResult({
 Fetched 5 record(s) in 13ms
 ```
 
+
 ## Pikachu (passo 6)
 ```
 > var poke = {"name": "Pichu"}
-> db.pokemons.find(poke)
+> db.pokemons.findOne(poke)
 {
   "_id": ObjectId("5643d04959b9f2f8f64d6c7a"),
   "name": "Pichu",
@@ -123,10 +124,11 @@ Fetched 5 record(s) in 13ms
   "height": 0.3
 }
 Fetched 1 record(s) in 8ms
+```
 
 
-
-## Atualização do Pikachu (passo 6)
+## Atualização do Pikachu (passo 7)
+```
 > poke.description = "The flame that burns at the tip of its tail is an indication of its emotions."
 The flame that burns at the tip of its tail is an indication of its emotions.
 > db.pokemons.save(poke)
