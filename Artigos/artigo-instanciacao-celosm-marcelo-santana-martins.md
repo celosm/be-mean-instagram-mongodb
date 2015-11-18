@@ -21,7 +21,7 @@ idade = 21;
 exibeIdade();
 ```
 
-No exemplo acima, será exibido ´undefined* no console. Isso ocorre pois, como existe a declaração da variável idade dentro do escopo de `exibeIdade()` e ela se encontra no final, o próprio compilador se encarrega de declará-la no topo do escopo.
+No exemplo acima, será exibido *undefined* no console. Isso ocorre pois, como existe a declaração da variável idade dentro do escopo de `exibeIdade()` e ela se encontra no final, o próprio compilador se encarrega de declará-la no topo do escopo.
 
 Com isso, o código ficaria da seguinte forma:
 
@@ -65,11 +65,11 @@ Variáveis globais são declaradas fora do escopo de uma função. Uma variável
 
 A sintaxe para declaração é:
 ```
-	var cor = 'azul';
+var cor = 'azul';
 
-	function exibeCor() {
-		console.log(cor); //irá exibir o valor azul.
-	}
+function exibeCor() {
+	console.log(cor); //irá exibir o valor azul.
+}
 ```
 
 
@@ -126,12 +126,3 @@ Para passar uma variável por parâmetro para uma IIFE, deve ser colocado na úl
 	console.log(val)
 }('Passando parâmetros para uma IIFE'));
 ```
-
-
-
-# Envio
-
-1. Fork [esse repositório](https://github.com/Webschool-io/be-mean-instagram-artigos/) 
-2. Nomeie seu artigo usando o seguinte padrão: artigo-instanciacao-githubuser-nome-completo.md
-3. Adicione seu exercício aqui na Pasta Variables
-4. Faça um Pull Requst enviando seu artigo.
