@@ -1,13 +1,13 @@
 # Artigo
-**autor**: Marcelo Santana Martins
+**Autor**: Marcelo Santana Martins
 
-**Prazo**: atÈ dia 18 de Novembro de 2015
+**Prazo**: at√© dia 18 de Novembro de 2015
 
-Explique, com teoria e cÛdigo, nesse artigo como o JavaScript cria e instancia as vari·veis, seguindo os seguintes tÛpicos.
+Explique, com teoria e c√≥digo, nesse artigo como o JavaScript cria e instancia as vari√°veis, seguindo os seguintes t√≥picos.
+
 
 ## Hoisting
-
-*Hoisting* È o procedimento executado pelo JavaScript de "mover" a declaraÁ„o de uma v·riavel para o topo de seu escopo, quando est· n„o for feita de forma explÌcita.
+*Hoisting* √© o procedimento executado pelo JavaScript de "mover" a declara√ß√£o de uma v√°riavel para o topo de seu escopo (quando est√° n√£o for feita de forma expl√≠cita).
 
 ```
 var idade; //declarada no escopo global
@@ -21,15 +21,15 @@ idade = 21;
 exibeIdade();
 ```
 
-No exemplo acima, ser· exibido *undefined* no console. Isso ocorre pois, como existe a declaraÁ„o da vari·vel idade dentro do escopo de exibeIdade() e ela se encontra no final, o prÛprio compilador se encarrega de declar·-la no topo do escopo.
+No exemplo acima, ser√° exibido ¬¥undefined* no console. Isso ocorre pois, como existe a declara√ß√£o da vari√°vel idade dentro do escopo de `exibeIdade()` e ela se encontra no final, o pr√≥prio compilador se encarrega de declar√°-la no topo do escopo.
 
-Com isso, o cÛdigo ficaria da seguinte forma:
+Com isso, o c√≥digo ficaria da seguinte forma:
 
 ```
 var idade;
 
 function exibeIdade(){
-    *var number; //hoisting de number*
+    var number; //hoisting de number
     console.log(idade);
     number = 27;
 }
@@ -39,66 +39,99 @@ exibeIdade();
 ```
 
 
+
 ## Closure
+√â a forma de como uma fun√ß√£o √© definida dentro de outra fun√ß√£o. Isso permite que a fun√ß√£o utilize tr√™s tipos de vari√°veis: locais, da fun√ß√£o pai e globais.
 
-Explique o que È, o porquÍ acontece e como usar. 
-Cite situaÁıes que vocÍ usaria.
+```
+function adicionaValor(a) {
+  return function(b) {
+    return a + b;
+  }
+}
 
+var contaCorrente = adicionaValor(20);
+var saldo = contaCorrente(10); 
+console.log(saldo);  // saldo √© 30, pois o valor de contaCorrente iniciou com 20 e foi adicionado 10.
+```
 
-
-
-
-
-
-
-
-
-
-
-## Vari·vel Global
-
-Explique como se usa uma var Global dentro de uma funÁ„o.
+*Closures* podem ser utilizados em fun√ß√µes que s√£o acionadas por usu√°rios, e agindo como um *callback*.
 
 
 
 
+## Vari√°vel Global
+Vari√°veis globais s√£o declaradas fora do escopo de uma fun√ß√£o. Uma vari√°vel global pode ser acessada e ter seu valor alterado dentro de qualquer fun√ß√£o.
+
+A sintaxe para declara√ß√£o √©:
+```
+	var cor = 'azul';
+
+	function exibeCor() {
+		console.log(cor); //ir√° exibir o valor azul.
+	}
+```
 
 
 
 
+## Vari√°vel por par√¢metro
+Quando uma fun√ß√£o recebe uma vari√°vel por par√¢metro, ela ser√° tratada como uma nova vari√°vel dentro do seu escopo.
+```
+function soma(a, b) {
+	return a + b;
+}
 
-## Vari·vel por par‚metro
+console.log(soma(3, 5));  //imprime o valor 8.
+```
 
-Explique o que acontece dentro da funÁ„o qnd um par‚metro È passado e tambÈm explique quando uma GLOBAL È passada por par‚metro.
+Caso seja utilizada uma vari√°vel global, al√©m de poder acessar o seu valor, poder√° alter√°-lo.
 
+```
+var a = 2;
+var b = 4;
 
+function mudaValor(val){
+  return (a = val);
+};
 
-
-
-
-
-## InstanciaÁ„o usando uma IIFE
-
-Explique como uma vari·vel pode receber um valor de uma IIFE.
-Explique como passar uma vari·vel por par‚metro para a IIFE e acontece com ela dentro da funÁ„o.
-
-
-
-
+console.log(mudaValor(b)); // imprime o valor 4 (al√©m de retornar o valor de b, altera o valor de a com o mesmo valor);
+console.log(a);            // imprime o valor 4.
+```
 
 
 
-## ConsideraÁıes
+## Instancia√ß√£o usando uma IIFE
+O termo IIFE significa `Immediately-Invoked Function Expression` e define uma fun√ß√£o que √© executada no momento da sua defini√ß√£o. Utilizamos quando queremos criar um escopo no JavaScript para que as vari√°veis definidas dentro da fun√ß√£o n√£o poluam o escopo global.
 
-Quanto mais explicado melhor.
+Uma vari√°vel pode receber um valor de uma IIFE da seguinte forma:
 
-Lembre que isso far· parte do seu currÌculo como aluno e ser· disponilizado no sistema de vagas, ou seja, o contratante poder· ver todos seus projetos e trabalhos feitos nesse curso.
+```
+var contador = (function () { 
+	var i = 1;
 
-Boa sorte.
+	return function () {		
+		return i++;
+	}
+}());
+
+console.log(contador()); //exibe o valor 1.
+console.log(contador()); //exibe o valor 2.
+console.log(contador()); //exibe o valor 3.
+```
+
+Para passar uma vari√°vel por par√¢metro para uma IIFE, deve ser colocado na √∫ltima abertura de parenteses da sintaxe abaixo:
+```
+(function (val) {
+	console.log(val)
+}('Passando par√¢metros para uma IIFE'));
+```
+
+
 
 # Envio
 
-1. Fork [esse repositÛrio](https://github.com/Webschool-io/be-mean-instagram-artigos/) 
-2. Nomeie seu artigo usando o seguinte padr„o: artigo-instanciacao-githubuser-nome-completo.md
-3. Adicione seu exercÌcio aqui na Pasta Variables
-4. FaÁa um Pull Requst enviando seu artigo.
+1. Fork [esse reposit√≥rio](https://github.com/Webschool-io/be-mean-instagram-artigos/) 
+2. Nomeie seu artigo usando o seguinte padr√£o: artigo-instanciacao-githubuser-nome-completo.md
+3. Adicione seu exerc√≠cio aqui na Pasta Variables
+4. Fa√ßa um Pull Requst enviando seu artigo.
